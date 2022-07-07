@@ -33,18 +33,17 @@
     <!-- Unlock Configuration -->
     <script>
       var unlockProtocolConfig = {
-        network: 4,
-        locks: {
-          '0xA93AF06edF3A57BFEDB3e72107e9308aC4C7B72d': {
-            name: 'A rinkeby lock',
+          "network": 100, // Network ID (1 is for mainnet, 4 for rinkeby, 100 for xDai, etc)
+          "locks": {
+            "0xac1fceC2e4064CCd83ac8C9B0c9B8d944AB0D246": {
+              "name": "Unlock Members"
+            }
           },
-        },
-        icon: 'https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg',
-        callToAction: {
-          default:
-            'Please Unlock things!',
-        },
-      }
+          "icon": "https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg",
+          "callToAction": {
+            "default": "Please unlock this demo!"
+          }
+        }
     </script>
   </head>
   <body>

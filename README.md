@@ -1,8 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
-## Available Scripts
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and was extended to utilize the [Unlock Paywall](https://docs.unlock-protocol.com/tools/paywall/).
 
-In the project directory, you can run:
+If this is the first time you have been introduced to [Unlock Protocol](https://unlock-protocol.com/) and you are an experienced developer then we suggest you start by dropping into the [Unlock Protocol Docs](https://docs.unlock-protocol.com/). We have less technical [Guides](https://unlock-protocol.com/guides/) which are geared more towards creators or people with less experience doing web development.
+
+## Find Support
+
+[Unlock Protocol Discord server](https://discord.com/invite/Ah6ZEJyTDp) is the best place to ask for support and technical questions are best asked in the developer channel where you'll find both Unlock Protocol core team members and community members ready to help you through whatever issues you may be having. In general you'll want to join us there for protocol updates, governance information and to connect with the greater Unlock Protocol ecosystem.
+
+## Before configuration
+Before you get started configuring your app you'll need a few important items.
+
+### Deploying a Lock
+You will need to deploy your own lock to use in the configuration below. If you haven't done that yet you can use the [Unlock Dashboard](https://app.unlock-protocol.com/dashboard). Documentation on how to deploy a lock via the dashboard can be found [here](https://docs.unlock-protocol.com/basics/deploying-a-lock). The current configuration file is preloaded with the Unlock Member lock so it will work out of the box but won't be very useful to you until you complete your lock deployment and update the configuration file.
+
+### Unlock Accounts & Credit Cards
+
+We understand with web3 not everyone is there yet and making it easier for users to get started is really the goal so your users don't have to be crypto native. For users of your app who may not have their own crypto wallet yet we've made it easy to create special [Unlock Accounts](https://docs.unlock-protocol.com/basics/unlock-accounts) and [enable payments via credit card](https://unlock-protocol.com/guides/enabling-credit-cards/).
+
+## Unlock Specific Configuration
+
+### Unlock Paywall
+Currently the app utilizes the latest version of the [Unlock Paywall](https://docs.unlock-protocol.com/tools/paywall/) but you only need to change the link in the index.html to specify a specific version if that is what you need. We are dedicated to pushing breaking changes to a new url for the [Unlock Paywall](https://docs.unlock-protocol.com/tools/paywall/) so you shouldn't fear leaving it on latest.
+
+In the public/index.html you will find an Unlock configuration object.
+
+```JavaScript
+<!-- Unlock Configuration -->
+<script>
+  var unlockProtocolConfig = {
+      "network": 100, // Network ID (1 is for mainnet, 4 for rinkeby, 100 for xDai, etc)
+      "locks": {
+        "0xac1fceC2e4064CCd83ac8C9B0c9B8d944AB0D246": {
+          "name": "Unlock Members"
+        }
+      },
+      "icon": "https://unlock-protocol.com/static/images/svg/unlock-word-mark.svg",
+      "callToAction": {
+        "default": "Please unlock this demo!"
+      }
+    }
+</script>
+```
+
+There are many different configuration options for the [Unlock Paywall](https://docs.unlock-protocol.com/tools/paywall/) and the complete documentation for those options can be found [here](https://docs.unlock-protocol.com/tools/paywall/configuring-checkout/).
+
+### Unlock Event Listeners
+
+You'll find we've added special event listeners in the src/App.js file. This is a very basic example which changes the visible content on a page when a user finishes the checkout or already has a key in their wallet and the state changes from "locked" to "unlocked".
+
+## Deploying the app
+
+Now that we've gone over the Unlock specific changes and configurations you should be ready to get started. In the project directory, you can run:
 
 ### `npm start`
 
